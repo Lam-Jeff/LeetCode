@@ -5,3 +5,6 @@ with cte as (
 , FIRST_VALUE(score) OVER (PARTITION BY student_id, subject ORDER BY exam_date DESC) as latest_score
 FROM Scores
 )
+SELECT DISTINCT * 
+FROM cte
+where first_score < latest_score
